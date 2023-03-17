@@ -244,11 +244,6 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 \end{enumerate}
 \end{textbox}
 
-\begin{textbox}{String Reconstruction/\href{https://leetcode.com/problems/word-break/}{Word Break}}
-    Find the shortest sequence of words that make up a given string.\\
-\green{Algorithm:} \myblue{Runtime:} \\
-\end{textbox}
-
 \begin{textbox}{\href{https://leetcode.com/problems/edit-distance/}{Edit Distance}}
     Find the minimum number of operations required to transform one string, $A[1\ldots n]$, into another, $B[1\ldots m]$. \\
 \green{Algorithm:} \myblue{Runtime and Space:} $O(nm)$
@@ -276,14 +271,16 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 \red{Notes:} Does not work for cyclic graphs.
 \end{textbox}
 
-\begin{textbox}{More DP Examples}
-    \begin{tabular}{r|p{0.8\textwidth}}\scriptsize
-        Problems  & SubProblem \\
-        \href{https://leetcode.com/problems/longest-increasing-subsequence/}{LongestIncrSubseq} & $\frac{3}{2}n - 2$ comparisions; $O(n)$ runtime.\\
-        Knapsack Problem &   \\
-        DP on trees: Dominating Set &   \\
-        Traveling salesman problem &   \\
-    \end{tabular}
+\begin{textbox}{(in-class) DP Examples}
+    \begin{itemize}
+        \item String Reconstruction(\href{https://leetcode.com/problems/word-break/)}{Word Break} 
+        \item \href{https://leetcode.com/problems/longest-increasing-subsequence/}{LongestIncrSubsequence (LIS)} 
+        \item \href{https://leetcode.com/problems/number-of-longest-increasing-subsequence/}{Number of LISs}
+        \item Context-free grammar parsing $O(n^3m^2)$
+        \item Knapsack Problem $O(n\cdot|capacity|)$ NP 
+        \item DP on trees: Dominating Set   
+        \item Traveling salesman problem   
+    \end{itemize}
     
 \end{textbox}
 
