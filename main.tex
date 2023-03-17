@@ -1,0 +1,299 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[landscape,margin=1cm]{geometry}
+\usepackage[english]{babel}
+\usepackage{minted}
+
+%-------------------------
+\input{templates.tex}
+
+%--------------------------------------------------------------------------------
+\begin{document}
+\small
+\begin{multicols}{3}
+
+\scriptsize
+
+%----------Math Fundementals Section ----------------
+\section{Math Fundementals}
+\begin{textbox}{Formulae}
+\green{\emph{Asymptotics}} Let $f$ and $g$ be non-negative functions, then $f(n)$ is...\\
+
+\begin{tabular}{c|c|p{0.6\textwidth}}
+     & {\bf...if and only if...} & {\bf if $\lim\limits_{n \to \infty} \frac{f(n)}{g(n)}$}  \\
+    $O(g(n))$ & $\exists c,N:f(n)\leq c\cdot g(n)$ for $n\geq N$ & $\neq \infty$.  \\
+    $o(g(n))$ & $\forall c,\exists N:f(n)\leq c\cdot g(n)$ for $n>N$ & $= 0$. \\
+    $\Omega(g(n))$ & $\exists c,N:f(n)\geq c\cdot g(n)$ for $n\geq N$ & $\neq 0$ \\
+    $\omega(g(n))$ & $\forall c,\exists N:f(n)\geq c\cdot g(n)$ for $n>N$ & $= \infty$. \\
+    $\Theta(g(n))$ & $f(n)$ is $O(g(n))$ and $g(n)$ is $O(f(n))$ & $\neq 0, \infty$ \\
+\end{tabular}\\
+\linebreak
+\begin{tabular}{c|p{0.8\textwidth}}
+    {\bf Implications} &  {\bf Equivalences} \\
+    $f = o(g) \Rightarrow f = O(g)$ & $f = O(g) \Leftrightarrow g = \Omega(f)$ \\
+    $f = \omega(g) \Rightarrow f = \Omega(g)$ & $f = o(g) \Leftrightarrow g = \omega(f)$ \\
+     & $f = O(g) \text{ and } f = \Omega(g) \Leftrightarrow f = \Theta(g)$ \\
+\end{tabular}
+\linebreak
+{\bf Generalizations:} For all $a, b > 0$, $k > 1$, and $n \geq 1$ 
+\[\begin{cases}
+    (\log n)^b = o(n^a)\\
+    n^b = o((1 + a)^n) \\
+    a^{\sqrt{\log n}} = o(n^b) \\
+    k^n > n! > n^{n^b} > n^a > \log n > n^{1/k} > \text{ c } & \text{ $\approx$ comparisions} \\
+    n! \approx n^n \cdot e^{-n} \cdot \sqrt{2\pi n} & \text{ Stirling's Formula }\\
+\end{cases}\]
+
+\green{\emph{Master Theorem: }} Let $T(n) = aT(n/b) + cn^k$ for $a \geq 1, b \geq 2, c, k \geq 0$. Then $T(n)$ is 
+\[\begin{cases}
+    \Theta(n^k) & \text{if $a < b^k$}\\
+    \Theta(n^k \log n) & \text{if $a = b^k$}\\
+    \Theta(n^{\log_b a}) & \text{if $a > b^k$}\\
+\end{cases}\]
+\end{textbox}
+
+%-----
+\section{Graph Algorithms}
+\begin{textbox}{Depth First Search Algorithm}
+    \green{DFS Algorithm} \myblue{Runtime:} $O(|V| + |E|)$ \\
+    1. Goes as deep as possible in the graph then backtrack.\\
+    2. (In-class algorithm) marks preorder and postorder numbers for every node. \\
+    3. In a directed graphs, DFS will label edges into (tree, forward, back, cross). No cross edges in undirected graphs.\\
+    \includegraphics[width=0.4\textwidth]{images/dfs-edges.jpeg}\\
+    \myblue{Applications:}\\
+    \begin{tabular}{c|p{0.6\textwidth}}
+         Detecting cycles & Check for a back edge \\
+         Topological Sort on {\bf DAGs} & Descending post-order\\
+        Strongly Connected Components & Hint: DFS on reversed Graph.\\
+   \end{tabular}\\
+\end{textbox}
+
+% ------------- Single Source Shortest Paths ----------------
+\begin{textbox}{Single Source Shortest Paths}
+    %----- BFS Algorithm  ----------------
+    \green{BFS Algorithm} \red{SSSP for unweighted graphs only.} \\
+    1. Goes level by level in the graph.\\
+    2. Uses a queue to process nodes.\\ 
+    \myblue{Runtime:} $O(|V| + |E|)$ \\
+    \linebreak
+    \green{Dijkstra’s Algorithm:} \red{only $+$ve weighted graphs} \\ 
+    1. Let $Dist[v] = \infty$ and $Prev[v] = $ NIL for all vertices $v$.\\
+    2. Let $Dist[s] = 0$ and initialize MinHeap with $(s, 0)$.\\
+    2. Keep poping the vertex with the smallest distance.\\
+    3. For each neighbor of the popped vertex, update the distance if it is smaller and add it to the heap. Repeat 2. until heap is empty.\\ 
+    \linebreak
+    \myblue{Runtime:} $O(|V|*popMin + |E|*Insert)$ \\
+    \linebreak
+    \green{Bellman-Ford Algorithm:} \red{Both $+/-$ve weighted graphs}\\
+    1. Let $Dist[v] = \infty$ and $Prev[v] = $ NIL for all vertices $v$.\\
+    2. Let $Dist[s] = 0$.\\
+    3. Repeat the following $|V|-1$ times:
+    \begin{itemize}
+    \item For each edge $(u, v)$ with weight $w$, if $Dist[u] + w < Dist[v]$, update $Dist[v] = Dist[u] + w$ and $Prev[v] = u$.
+    \end{itemize}
+    4. Checking for negative weight cycles: repeat the above step once. If any distance can still be improved, a negative weight cycle exists.\\
+    \linebreak
+    \myblue{Runtime:} $O(|V|*|E|)$ \\
+    \linebreak
+    \green{Linear Runtime:} \red{only for Directed Acyclic Graphs (DAGs)} \\
+    1. Run DFS to get topological sort.\\
+    2. Visit all edges coming out of nodes in the topological order. If multiple edges coming out, pick the shortest. \\
+    \myblue{Runtime:} $O(|V| + |E|)$ \\
+\end{textbox}
+
+\begin{textbox}{Min Heaps}
+    \green{Representation:} Visually a complete tree. Implementationwise,\\
+    let $A[0..n-1]$ be a list where $A[0]$ is the root and for any $i$th element, its parent, left, and right children are at $\lfloor i/2 \rfloor, 2i, 2i+1$ respectively.\\
+    \linebreak
+    {\bf \emph{Heap Property:}} The parent element is smaller than its children.\\
+    \linebreak
+    \begin{tabular}{c |p{0.7\textwidth}}\scriptsize
+        {\bf Operations} & {\bf Description} \\
+        $Insert(a)$ & let $A[n] = a$ and $HeapifyUp(n)$ \\
+        $PopMin$ & let $A[0] = A[n-1]$ and $HeapifyDown(0)$ \\
+        $HeapifyUp(i)$ & repeatedly swap $A[i]$ with its parent until the heap property is restored \\
+        $HeapifyDown$ & repeatedly swap $A[i]$ with its smallest child until the heap property is restored \\
+    \end{tabular}
+    \myblue{Heaps Operations and Runtimes:} Both $O(\log n)$ with binary heaps. \\
+    \red{Note:} Can do better with Fibo-Heaps (amortized $O(1)$ for PopMin.)\\
+\end{textbox}
+
+
+
+%-------------Minimum Spanning Trees ----------------
+
+\begin{textbox}{Minimum Spanning Trees}
+    \blue{Basic Properties:} 
+    \begin{enumerate}
+        \item {\bf a Tree} is connected, acyclic, and has $|V|-1$ edges (any two implies the third).
+        \item {\bf Cut Property} states that for any cut of a connected, undirected graph, the minimum weight edge that crosses the cut belongs to the MST.
+        \item Only for connected, undirected, and weighted (non-negative) graphs.
+    \end{enumerate}
+    \green{Prim's Algorithm:}  \myblue{Runtime:} $O(|E| \log |V|)$ with Fibo-heaps.\\
+    1. Start with a single vertex and add edges greedily.\\
+    2. Implemented in a similar fashion as Dijkstra’s, where we add vertex $v$ to the MST when we pop it from the heap.\\
+    \linebreak
+    \green{Kruskal’s Algorithm:} \myblue{Runtime:} $O(|E|\log^*{|V|})$ amortized\\
+    1. Sort edges in ascending order of weight. \\
+    2. Repeatedly add the lightest edge that does not create a cycle until we have $|V|-1$ edges.\\
+    \linebreak
+    \red{Notes:} Implemented using a union-find data structure.
+\end{textbox}
+
+
+\begin{textbox}{Disjoint Forest Data Structure} 
+    Maintain disjoint sets that can be combined ("unioned") efficiently. Operations MakeSet($x$), Find($x$), and Union($a, b$)\\
+    \linebreak
+    \myblue{Runtime:} $m$ UNION $+ n$ FIND operations take $O((m + n) \log^* n)$.\\
+    \red{Note:} $\log^* n$ is the number of times we can $\log_2$ $n$ until we get $\leq$ 1.\\
+    \red{Heuristics:} 
+    \begin{itemize}
+        \item Union by rank. When performing a union operation, we prefer to merge the shallower tree into the deeper tree.
+        \item Path compression. After performing a find operation, attach all the nodes touched directly onto the root of the tree.
+    \end{itemize}
+    \green{Example:}\\
+    \includegraphics[width=\textwidth]{images/Union-Find.jpeg}
+\end{textbox}
+
+%-------------Greedy Algorithms ----------------
+\section{Greedy Algorithms}
+
+\begin{textbox}{}
+    \green{Main idea:} At each step, make a locally optimal choice in hope of reaching the globally optimal solution. \\
+\end{textbox}
+\begin{textbox}{Horn Formula}
+    \green{Algorithm:} Set all variables to false and greedily set ones to be true when forced to.\\
+    \linebreak
+    \myblue{Runtime:} linear time in the length of the formula (i.e., the total number of appearances of all literals). \\
+    \linebreak
+    \red{Notes:} Only works for SAT instances where in each clause, there is at most one positive literal.
+\end{textbox}
+
+\begin{textbox}{Huffman Coding}
+    \green{Algorithm:} \myblue{Runtime:} $O(n\log n)$ \\
+    Find the best encoding by greedily combining the two least frequently items. Optimal in terms of encoding one character at a time.\\
+    \linebreak
+    \red{Example:} A Huffman tree for string  "Mississippi River"\\
+    \includegraphics[width=0.75\textwidth]{images/Huffman-coding.jpeg}
+\end{textbox}
+
+\begin{textbox}{Set Cover}
+    Given $X = \{x_1,\ldots,x_n\}$, and a collection of subsets $\cal{S}$ of $X$ such
+    that $\bigcup_{S \in \cal{S}} S = X$, find the subcollection $\cal{T} \subseteq \cal{S}$ such that the sets of
+    $\cal{T}$ cover $X$.\\
+    \linebreak
+    \green{Algorithm:} \myblue{Runtime:} $O(|U|)$ \\
+    1. Greedily choose the set that covers the most number of the remaining uncovered elements at the given iteration.\\
+    {\bf claim:} Let $k$ be the size of the smallest set cover for
+    the instance $(X,\cal{S})$.  Then the greedy heuristic finds
+    a set cover of size at most $k \ln n$.
+    \linebreak
+    \red{Note:}\\Not always optimal; achieves $O(\log n)$ approximation ratio.
+\end{textbox}
+
+%-------------Divide and Combine ----------------
+\section{Divide and Combine}
+
+\begin{textbox}{}
+\green{Main Idea:} Divide the problem into smaller pieces, recursively solve those, and then combine their results to get the final result.\\
+\end{textbox}
+
+\begin{textbox}{Famous Examples w/ Runtimes}
+    \begin{tabular}{r|p{0.8\textwidth}}\scriptsize
+        Mergesort  & $O(n\log n)$  \\
+        Min and Max on a line & $\frac{3}{2}n - 2$ comparisions; $O(n)$ runtime.\\
+        Closest Pair of Points &  $O(n \log^2 n)$ \\
+    \end{tabular}
+\end{textbox}
+
+\begin{textbox}{$n$-digit Integer Multiplication}
+    \begin{tabular}{r|p{0.8\textwidth}}\scriptsize
+        standard Multiplication & $\Theta(n^2)$ \\
+        3 products on $n/2$ digits & $\Theta(n^{\log_2 3}) = \Theta(n^{1.59})$ \\
+        5 products on $n/3$ digits& $\Theta(n^{\log_3 5}) = \Theta(n^{1.46})$ \\
+    \end{tabular}
+\linebreak
+\end{textbox}
+
+\begin{textbox}{$n \times n$ Matrix Multiplication}
+\green{Strassen's Algorithm:} \myblue{Runtime:} $O(n^{\log_2 7})$ \\
+Divide into four submatrices, each of size $n/2$ by $n/2$.
+$$
+\left[ \begin{array} {cc} A & B \\ C & D \end{array} \right ]
+\left[ \begin{array} {cc} E & F \\ G & H \end{array} \right ]
+=
+\left[ \begin{array} {cc} AE+BG & AF+BH \\ CE+DG & CF+DH \end{array} \right ]
+$$
+Find: $P_1 = A(F-H)$, $P_2 = (A+B)H$, $P_3 = (C+D)E$, $P_4 = D(G-E)$, $P_5 = (A+D)(E+H)$, $P_6 = (B-D)(G+H)$, $P_7 = (C-A)(E+F)$, then: \\
+\linebreak
+$AE+BG = -P_2 + P_4 + P_5 + P_6$ and $AF +BH = P_1 + P_2$\\
+$CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
+\end{textbox}
+
+%-------------Dynamic Programming ----------------
+\section{Dynamic Programming}
+
+\begin{textbox}{}
+\green{Main Idea:} Maintain a lookup table of correct solutions to sub-problems and build up this table towards the actual solution.\\
+\blue{Steps:}
+\begin{enumerate}
+    \item Define subproblems and recurrence to solve subproblems.
+    \item Combine with {\bf reuse}.
+    \item Runtime and space analysis.
+\end{enumerate}
+\end{textbox}
+
+\begin{textbox}{String Reconstruction/\href{https://leetcode.com/problems/word-break/}{Word Break}}
+    Find the shortest sequence of words that make up a given string.\\
+\green{Algorithm:} \myblue{Runtime:} \\
+\end{textbox}
+
+\begin{textbox}{\href{https://leetcode.com/problems/edit-distance/}{Edit Distance}}
+    Find the minimum number of operations required to transform one string, $A[1\ldots n]$, into another, $B[1\ldots m]$. \\
+\green{Algorithm:} \myblue{Runtime and Space:} $O(nm)$
+\begin{enumerate}
+    \item Subproblem: let $D(i,j)$ represent the edit distance between $A[1\ldots i]$ and $B[1\ldots j]$.
+    \item Recurrence is: \\
+    Base cases: $D(i,0) = i, D(0,j) = j.$ \\
+    $D(i,j) = \min[D(i-1,j)+1,D(i,j-1)+1,D(i-1,j-1)+ (1 \text { if } i = j \text {, $0$ otherwise})].$
+    \item return $D(n,m)$.
+\end{enumerate}
+\end{textbox}
+
+\begin{textbox}{All Pairs Shortest Paths}
+    Given a graph $G$ with $n$ vertices and $m$ edges, calculate distances of the shortest paths between {\em every} pair of nodes. \\
+\green{Floyd-Warshall Algorithm:} \myblue{Runtime:} $O(n^3)$
+\begin{enumerate}
+    \item Subproblem: let $D_k[i,j]$ represent the shortest path between $i$ and $j$ using only nodes in $[1\ldots k]$.
+    \item Recurrence is:
+    \[\begin{cases}
+            D_0[i,j] = d_{ij} \text{ if } i \text{ and } j \text{ are connected, } \infty \text{ otherwise}. \\ 
+            D_k[i,j] = \min(D_{k - 1}[i,j], D_{k - 1}(i,k)+D_{k - 1}[k,j]). 
+    \end{cases}\]
+    \item return $D(i,j,n)$.
+\end{enumerate}
+\red{Notes:} Does not work for cyclic graphs.
+\end{textbox}
+
+\begin{textbox}{More DP Examples}
+    \begin{tabular}{r|p{0.8\textwidth}}\scriptsize
+        Problems  & SubProblem \\
+        \href{https://leetcode.com/problems/longest-increasing-subsequence/}{LongestIncrSubseq} & $\frac{3}{2}n - 2$ comparisions; $O(n)$ runtime.\\
+        Knapsack Problem &   \\
+        DP on trees: Dominating Set &   \\
+        Traveling salesman problem &   \\
+    \end{tabular}
+    
+\end{textbox}
+
+% \begin{textbox}{Traveling Salesman}
+%     Find shortest possible route that visits every city exactly once and returns to the starting city. Dynamic programming can be used to find the optimal solution by breaking down the problem into smaller sub-problems and building up the solution iteratively. However, the runtime grows exponentially with the number of cities, so it is not practical for large instances of the problem.\\
+%     \green{Algorithm:} DP can provide better exponential-time solutions to NP-hard problems.\\
+%     \linebreak
+%     \myblue{Runtime:} Exponential (not efficient for large input sizes).\\
+% \end{textbox}
+
+%--------------------------------------------- 
+\end{multicols}
+\end{document}

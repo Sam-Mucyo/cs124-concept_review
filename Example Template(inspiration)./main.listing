@@ -1,0 +1,4 @@
+for (auto element : vector)
+{
+    sum += element;
+}

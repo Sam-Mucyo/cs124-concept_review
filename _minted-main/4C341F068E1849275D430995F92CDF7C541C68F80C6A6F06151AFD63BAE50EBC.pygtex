@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{preorderTraversal}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{root}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{lst}
+\end{Verbatim}
