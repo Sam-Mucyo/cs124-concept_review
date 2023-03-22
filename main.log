@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.11)  21 MAR 2023 21:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.11)  21 MAR 2023 21:31
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1337,118 +1337,118 @@ Underfull \hbox (badness 10000) in paragraph at lines 69--70
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--100
+Underfull \hbox (badness 10000) in paragraph at lines 74--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--100
+Underfull \hbox (badness 10000) in paragraph at lines 74--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--100
+Underfull \hbox (badness 10000) in paragraph at lines 74--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--100
+Underfull \hbox (badness 10000) in paragraph at lines 74--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--100
+Underfull \hbox (badness 10000) in paragraph at lines 74--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--100
+Underfull \hbox (badness 10000) in paragraph at lines 74--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--117
+Underfull \hbox (badness 10000) in paragraph at lines 102--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--117
+Underfull \hbox (badness 10000) in paragraph at lines 102--116
 
  []
 
 
-Overfull \hbox (7.42973pt too wide) in paragraph at lines 103--117
+Overfull \hbox (7.42973pt too wide) in paragraph at lines 102--116
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--117
+Underfull \hbox (badness 10000) in paragraph at lines 102--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--143
+Underfull \hbox (badness 10000) in paragraph at lines 134--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--143
+Underfull \hbox (badness 10000) in paragraph at lines 134--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--153
+Underfull \hbox (badness 10000) in paragraph at lines 146--152
 
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+Raleway-TLF on input line 153.
+LaTeX Font Info:    Trying to load font information for TS1+Raleway-TLF on input line 152.
 (/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/tex/latex/raleway/TS1Raleway-TLF.fd
 File: TS1Raleway-TLF.fd 2014/07/28 (autoinst) Font definitions for TS1/Raleway-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Raleway-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 153.
+(Font)              scaled to size 7.0pt on input line 152.
 <images/Union-Find.jpeg, id=63, 2204.235pt x 790.955pt>
 File: images/Union-Find.jpeg Graphic file (type jpg)
 <use images/Union-Find.jpeg>
-Package pdftex.def Info: images/Union-Find.jpeg  used on input line 157.
+Package pdftex.def Info: images/Union-Find.jpeg  used on input line 156.
 (pdftex.def)             Requested size: 231.15416pt x 82.93806pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--172
+Underfull \hbox (badness 10000) in paragraph at lines 166--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--172
+Underfull \hbox (badness 10000) in paragraph at lines 166--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--173
+Underfull \hbox (badness 10000) in paragraph at lines 164--172
 
  []
 
@@ -1458,25 +1458,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--173
 <images/Huffman-coding.jpeg, id=85, 1994.45125pt x 914.41624pt>
 File: images/Huffman-coding.jpeg Graphic file (type jpg)
 <use images/Huffman-coding.jpeg>
-Package pdftex.def Info: images/Huffman-coding.jpeg  used on input line 179.
+Package pdftex.def Info: images/Huffman-coding.jpeg  used on input line 178.
 (pdftex.def)             Requested size: 173.36562pt x 79.47543pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--180
+Underfull \hbox (badness 10000) in paragraph at lines 174--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--194
+Underfull \hbox (badness 10000) in paragraph at lines 182--193
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
@@ -1486,74 +1491,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 200--201
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--202
-
- []
-
-
-Overfull \hbox (47.8187pt too wide) in paragraph at lines 204--209
+Overfull \hbox (47.8187pt too wide) in paragraph at lines 203--208
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
 
 
-Overfull \hbox (56.62437pt too wide) in paragraph at lines 212--218
+Overfull \hbox (56.62437pt too wide) in paragraph at lines 211--217
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--218
+Underfull \hbox (badness 10000) in paragraph at lines 211--217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--233
+Underfull \hbox (badness 10000) in paragraph at lines 227--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--233
+Underfull \hbox (badness 10000) in paragraph at lines 227--232
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
 
  []
 
 LaTeX Font Info:    Font shape `T1/Raleway-TLF/m/it' will be
-(Font)              scaled to size 7.0pt on input line 261.
+(Font)              scaled to size 7.0pt on input line 260.
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
 
  []
 
 
-Overfull \hbox (85.73761pt too wide) in paragraph at lines 276--285
+Overfull \hbox (85.73761pt too wide) in paragraph at lines 275--284
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--286
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
@@ -1565,15 +1565,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41688 strings out of 476344
- 848618 string characters out of 5785304
+ 41687 strings out of 476344
+ 848599 string characters out of 5785304
  1928346 words of memory out of 5000000
- 61441 multiletter control sequences out of 15000+600000
+ 61440 multiletter control sequences out of 15000+600000
  667039 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,14n,107p,739b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/raleway/a_bzmckq.enc}{/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/raleway/a_2bcjq6.enc}</Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Bold.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-BoldItalic.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Italic.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Regular.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (2 pages, 1411830 bytes).
+Output written on main.pdf (2 pages, 1411850 bytes).
 PDF statistics:
  172 PDF objects out of 1000 (max. 8388607)
  22 named destinations out of 1000 (max. 500000)

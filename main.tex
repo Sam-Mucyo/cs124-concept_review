@@ -80,8 +80,7 @@
     \green{Dijkstra’s Algorithm:} \red{only $+$ve weighted graphs} \\ 
     1. Let $Dist[v] = \infty$ and $Prev[v] = $ NIL for all vertices $v$.\\
     2. Let $Dist[s] = 0$ and initialize MinHeap with $(s, 0)$.\\
-    3. While heap isn't empty, keep poping the vertex (say $u$) with the smallest distance.\\
-    4. For each neighbor $v$ of $u$ with weight $w$, {\bf \textcolor{blue}{update(u, v)}}.\\
+    3. While heap isn't empty, keep poping the vertex (say $u$) with the smallest distance. For each neighbor $v$ of $u$ with weight $w$, {\bf \textcolor{blue}{update(u, v)}}.\\
     \linebreak
     \myblue{Runtime:} $O(|V|*popMin + |E|*Insert)$ \\
     \linebreak
