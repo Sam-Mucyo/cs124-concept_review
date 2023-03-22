@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.11)  21 MAR 2023 20:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.11)  21 MAR 2023 20:29
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1573,7 +1573,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  106i,14n,107p,739b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/raleway/a_bzmckq.enc}{/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/raleway/a_2bcjq6.enc}</Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Bold.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-BoldItalic.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Italic.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Regular.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (2 pages, 1411842 bytes).
+Output written on main.pdf (2 pages, 1411841 bytes).
 PDF statistics:
  172 PDF objects out of 1000 (max. 8388607)
  22 named destinations out of 1000 (max. 500000)
