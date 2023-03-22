@@ -24,7 +24,7 @@
      & {\bf...if and only if...} & {\bf if $\lim\limits_{n \to \infty} \frac{f(n)}{g(n)}$}  \\
     $O(g(n))$ & $\exists c,N:f(n)\leq c\cdot g(n)$ for $n\geq N$ & $\neq \infty$.  \\
     $o(g(n))$ & $\forall c,\exists N:f(n)\leq c\cdot g(n)$ for $n>N$ & $= 0$. \\
-    $\Omega(g(n))$ & $\exists c,N:f(n)\geq c\cdot g(n)$ for $n\geq N$ & $\neq 0$ \\
+    $\Omega(g(n))$ & $\exists c,N:f(n)\geq c\cdot g(n)$ for $n\geq N$ & $\neq 0$\\
     $\omega(g(n))$ & $\forall c,\exists N:f(n)\geq c\cdot g(n)$ for $n>N$ & $= \infty$. \\
     $\Theta(g(n))$ & $f(n)$ is $O(g(n))$ and $g(n)$ is $O(f(n))$ & $\neq 0, \infty$ \\
 \end{tabular}\\
@@ -44,7 +44,6 @@
     k^n > n! > n^{n^b} > n^a > \log n > n^{1/k} > \text{ c } & \text{ $\approx$ comparisions} \\
     n! \approx n^n \cdot e^{-n} \cdot \sqrt{2\pi n} & \text{ Stirling's Formula }\\
 \end{cases}\]
-
 \green{\emph{Master Theorem: }} Let $T(n) = aT(n/b) + cn^k$ for $a \geq 1, b \geq 2, c, k \geq 0$. Then $T(n)$ is 
 \[\begin{cases}
     \Theta(n^k) & \text{if $a < b^k$}\\
@@ -58,13 +57,13 @@
 \begin{textbox}{Depth First Search Algorithm}
     \green{DFS Algorithm} \myblue{Runtime:} $O(|V| + |E|)$ \\
     1. Goes as deep as possible in the graph then backtrack.\\
-    2. (In-class algorithm) marks preorder and postorder numbers for every node. \\
-    3. In a directed graphs, DFS will label edges into (tree, forward, back, cross). No cross edges in undirected graphs.\\
+    2. (In-class algorithm) marks preorder and postorder numbers of each node.\\
+    3. In a directed graphs, DFS will label edges as follows. No cross edges in undirected graphs.\\
     \includegraphics[width=0.4\textwidth]{images/dfs-edges.jpeg}\\
     \myblue{Applications:}\\
     \begin{tabular}{c|p{0.6\textwidth}}
-         Detecting cycles & Check for a back edge \\
-         Topological Sort on {\bf DAGs} & Descending post-order\\
+         Detecting cycles & $\exists$ (u, v): postorder(u) < postorder(v)\\
+         Topological Sort on {\bf DAGs} & Decreasing post-order\\
         Strongly Connected Components & Hint: DFS on reversed Graph.\\
    \end{tabular}\\
 \end{textbox}
@@ -77,28 +76,26 @@
     2. Uses a queue to process nodes.\\ 
     \myblue{Runtime:} $O(|V| + |E|)$ \\
     \linebreak
+    Let  {\bf \textcolor{blue}{update(u, v)}} be defined as: if $Dist[u] + \text{length}(u, v)< Dist[v]$, update: $Prev[v] = u$ and $Dist[v] = Dist[u] + \text{length}(u, v)$.\\
     \green{Dijkstra’s Algorithm:} \red{only $+$ve weighted graphs} \\ 
     1. Let $Dist[v] = \infty$ and $Prev[v] = $ NIL for all vertices $v$.\\
     2. Let $Dist[s] = 0$ and initialize MinHeap with $(s, 0)$.\\
-    2. Keep poping the vertex with the smallest distance.\\
-    3. For each neighbor of the popped vertex, update the distance if it is smaller and add it to the heap. Repeat 2. until heap is empty.\\ 
+    3. While heap isn't empty, keep poping the vertex (say $u$) with the smallest distance.\\
+    4. For each neighbor $v$ of $u$ with weight $w$, {\bf \textcolor{blue}{update(u, v)}}.\\
     \linebreak
     \myblue{Runtime:} $O(|V|*popMin + |E|*Insert)$ \\
     \linebreak
-    \green{Bellman-Ford Algorithm:} \red{Both $+/-$ve weighted graphs}\\
+    \green{Bellman-Ford Algorithm:} \red{Only $+$ and $-$ve weighted graphs}\\
     1. Let $Dist[v] = \infty$ and $Prev[v] = $ NIL for all vertices $v$.\\
     2. Let $Dist[s] = 0$.\\
-    3. Repeat the following $|V|-1$ times:
-    \begin{itemize}
-    \item For each edge $(u, v)$ with weight $w$, if $Dist[u] + w < Dist[v]$, update $Dist[v] = Dist[u] + w$ and $Prev[v] = u$.
-    \end{itemize}
-    4. Checking for negative weight cycles: repeat the above step once. If any distance can still be improved, a negative weight cycle exists.\\
+    3. For $|V|-1$ times: For each edge $(u, v)$, {\bf \textcolor{blue}{update(u, v)}}\\
+    4. Checking for negative weight cycles: repeat the above step once. If any distance can still be improved, a negative weight cycle exists. Hence, return {\bf Inconclusive}\\
     \linebreak
     \myblue{Runtime:} $O(|V|*|E|)$ \\
     \linebreak
     \green{Linear Runtime:} \red{only for Directed Acyclic Graphs (DAGs)} \\
     1. Run DFS to get topological sort.\\
-    2. Visit all edges coming out of nodes in the topological order. If multiple edges coming out, pick the shortest. \\
+    2. For every edge ($u, v$), in topological sort, {\bf \textcolor{blue}{update(u, v)}}.\\
     \myblue{Runtime:} $O(|V| + |E|)$ \\
 \end{textbox}
 
@@ -130,14 +127,18 @@
         \item {\bf Cut Property} states that for any cut of a connected, undirected graph, the minimum weight edge that crosses the cut belongs to the MST.
         \item Only for connected, undirected, and weighted (non-negative) graphs.
     \end{enumerate}
-    \green{Prim's Algorithm:}  \myblue{Runtime:} $O(|E| \log |V|)$ with Fibo-heaps.\\
-    1. Start with a single vertex and add edges greedily.\\
-    2. Implemented in a similar fashion as Dijkstra’s, where we add vertex $v$ to the MST when we pop it from the heap.\\
+    \green{Prim's Algorithm:}
+    \begin{enumerate}
+        \item Start with a single vertex and greedily add closest vertices.
+        \item Similar to Dijkstra's algorithm, but $dist[v]$ is the weight of the edge connecting $v$ to the MST instead of the distance from $s$.
+    \end{enumerate} 
+    \myblue{Runtime:} $O(|E| \log |V|)$ with Fibo-heaps\\
     \linebreak
-    \green{Kruskal’s Algorithm:} \myblue{Runtime:} $O(|E|\log^*{|V|})$ amortized\\
+    \green{Kruskal’s Algorithm:}\\
     1. Sort edges in ascending order of weight. \\
     2. Repeatedly add the lightest edge that does not create a cycle until we have $|V|-1$ edges.\\
     \linebreak
+    \myblue{Runtime:} $nT(\text{Union}) + mT(\text{Find}) + T(\text{Sort $m$ Edges})$.\\
     \red{Notes:} Implemented using a union-find data structure.
 \end{textbox}
 
@@ -145,7 +146,7 @@
 \begin{textbox}{Disjoint Forest Data Structure} 
     Maintain disjoint sets that can be combined ("unioned") efficiently. Operations MakeSet($x$), Find($x$), and Union($a, b$)\\
     \linebreak
-    \myblue{Runtime:} $m$ UNION $+ n$ FIND operations take $O((m + n) \log^* n)$.\\
+    \myblue{Runtime:} An sequence of $m$ UNIONs and $n$ FINDs operations take $O((m + n) \log^* n)$.\\
     \red{Note:} $\log^* n$ is the number of times we can $\log_2$ $n$ until we get $\leq$ 1.\\
     \red{Heuristics:} 
     \begin{itemize}
@@ -271,17 +272,16 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 \red{Notes:} Does not work for cyclic graphs.
 \end{textbox}
 
-\begin{textbox}{(in-class) DP Examples}
-    \begin{itemize}
-        \item String Reconstruction(\href{https://leetcode.com/problems/word-break/)}{Word Break} 
-        \item \href{https://leetcode.com/problems/longest-increasing-subsequence/}{LongestIncrSubsequence (LIS)} 
-        \item \href{https://leetcode.com/problems/number-of-longest-increasing-subsequence/}{Number of LISs}
-        \item Context-free grammar parsing $O(n^3m^2)$
-        \item Knapsack Problem $O(n\cdot|capacity|)$ NP 
-        \item DP on trees: Dominating Set   
-        \item Traveling salesman problem   
-    \end{itemize}
-    
+\begin{textbox}{(in-class) DP Examples }
+    \begin{tabular}{r|p{0.8\textwidth}}\scriptsize
+        & Link to leetcode Follow-up  \\
+        & \\
+        String Reconstruction & \href{https://leetcode.com/problems/word-break/)}{Word Break} \\
+        Longest Common Subsequence & \href{https://leetcode.com/problems/longest-common-subsequence/}{1143}\\
+        Longest Increasing Subsequence & \href{https://leetcode.com/problems/longest-increasing-subsequence/}{300}\\
+        Edit Distance & \href{https://leetcode.com/problems/edit-distance/}{72} \\
+        Knapsack & \href{https://leetcode.com/problems/coin-change/}{Coin Change} \\\\
+    \end{tabular}
 \end{textbox}
 
 % \begin{textbox}{Traveling Salesman}
@@ -294,3 +294,9 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 %--------------------------------------------- 
 \end{multicols}
 \end{document}
+
+% \begin{enumerate}
+%     \item Context-free grammar parsing $O(n^3m^2)$
+%     \item DP on trees: Dominating Set   
+%     \item Traveling salesman problem 
+% \end{enumerate}
