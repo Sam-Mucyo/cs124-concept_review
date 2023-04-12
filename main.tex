@@ -4,6 +4,8 @@
 \usepackage[landscape,margin=1cm]{geometry}
 \usepackage[english]{babel}
 \usepackage{minted}
+\usepackage{mathtools}
+\usepackage{amssymb}
 
 %-------------------------
 \input{templates.tex}
@@ -271,24 +273,104 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 \red{Notes:} Does not work for cyclic graphs.
 \end{textbox}
 
-\begin{textbox}{(in-class) DP Examples }
-    \begin{tabular}{r|p{0.8\textwidth}}\scriptsize
-        & Link to leetcode Follow-up  \\
-        & \\
-        String Reconstruction & \href{https://leetcode.com/problems/word-break/}{Word Break} \\
-        Longest Common Subsequence & \href{https://leetcode.com/problems/longest-common-subsequence/}{1143}\\
-        Longest Increasing Subsequence & \href{https://leetcode.com/problems/longest-increasing-subsequence/}{300}\\
-        Edit Distance & \href{https://leetcode.com/problems/edit-distance/}{72} \\
-        Knapsack & \href{https://leetcode.com/problems/coin-change/}{Coin Change} \\\\
-    \end{tabular}
+\begin{textbox}{Hashing and Set Resemblance}
+
 \end{textbox}
 
-% \begin{textbox}{Traveling Salesman}
-%     Find shortest possible route that visits every city exactly once and returns to the starting city. Dynamic programming can be used to find the optimal solution by breaking down the problem into smaller sub-problems and building up the solution iteratively. However, the runtime grows exponentially with the number of cities, so it is not practical for large instances of the problem.\\
-%     \green{Algorithm:} DP can provide better exponential-time solutions to NP-hard problems.\\
-%     \linebreak
-%     \myblue{Runtime:} Exponential (not efficient for large input sizes).\\
-% \end{textbox}
+\begin{textbox}{Primality Testing}
+    \green{Algorithm:} Generate large (d-digit) primes: 
+    Generate a random d-digit number, Check if it is prime, If not, repeat.\\
+
+    Facts 1: $k^{th}$ prime number is $\Theta (k \log k)$.\\
+    Fact 2: of the integers $1, \dots, n$, $\Theta(n/\log n)$ are prime.\\
+    How many d-digits generations until prime: $O(d)$.
+
+    \green{Fermat's Little Theorem:} \\
+    If $p$ is prime and $a$ is not divisible by $p$, then $a \in \mathbb{Z}$, $a^{p-1} \equiv 1 \pmod{p}$.\\
+    \red{Notes:}
+    {\bf $a$-Pseudoprime $p$}: $a^{p-1} \equiv 1 \pmod{p}$, but $p$ is not prime.\\
+    {\bf Carmichael number:} composite number $n$ s.t $a^{n-1} \equiv 1 \pmod{n}$ for all $a \in \mathbb{Z}$. Example: $561$ \\
+
+    \green{Miller-Rabin Primality Test:} \\
+    If $p$ is prime, the only solutions to $a^2 \equiv 1 \bmod p$ are $a \in \{\pm 1\}$. \\
+    A {\bf non-trivial square root of 1} is an integer $a$ such that $a^2 \equiv 1 \pmod{n}$ and $a \not\equiv \pm 1 \pmod{n}$.\\
+    \blue{The Test}
+    \begin{enumerate}
+        \item Choose a random $a \in [n]$ 
+        \item \textcolor{purple}{if $a^{n-1} \not\equiv 1 \pmod{n}$, return $n$ is composite and $a$ is a witness.}
+        \item Let $n-1 = 2^tu$ and compute $a^u, a^{2u},\ldots, a^{2^tu}$.
+        \item Check for $a^{2^{i-1}u} \not\equiv \pm 1 \pmod{n}, a^{2^iu} \equiv 1 \pmod{n}$
+        \item If so, we've found a {\em non-trivial square root} of 1 modulo $n$.
+        \end{enumerate}
+     $a$ is a {\bf witness} to the compositeness of $n$, if $n$ fails the test under $a$.\\
+    \red{Note:} Let ${\bf F}$ be \textcolor{purple}{incorrectly} identifying $n$ as prime.  ${\bf Pr(F) \leq 1/4}$. With $k$ independent tests, $ {\bf Pr(F) \leq 4^{-k}}$.
+\end{textbox}
+
+\begin{textbox}{Euclid's algorithm}
+    Def: $gcd(a, b) = max(d \in \mathbb{Z} : d | a \text{ and } d | b)$.\\
+    \green{Basic algorithm:} find the $gcd(a, b)$ by repeatedly subtracting the smaller number from the larger number.\\
+    \linebreak
+    \green{Extended Euclid's algorithm:} find $x, y$ such that $ax + by = gcd(a, b)$.\\
+    \begin{lstlisting}[language=Python]
+        def gcd(a, b):      # a >= b >= 0
+            if b == 0:
+                return a
+            return gcd(b, a mod b)
+    \end{lstlisting}
+
+    \begin{lstlisting}[language=Python]
+        def Extended-Euclid(a,b): 	# a >= b >= 0
+	        if b==0: return (a,1,0)
+            Compute k such that a = bk + (a mod b)
+            (d,x,y) = Extended-Euclid(b, a mod b)
+            return (d,y,x-ky)
+
+    \end{lstlisting}
+    \blue{Example:} Run extended algorithm on $a = 35, b = 15$.
+    \begin{itemize}
+        \item $gcd(35, 15) = gcd(15, 5) = gcd(5, 0) = 5$.
+        \item $35 = 2 \cdot 15 + 5$.
+        \item $15 = 3 \cdot 5 + 0$.
+        \item $5 = 1 \cdot 0 + 5$.
+        \item $x = 1, y = -2$.
+    \end{itemize}
+\end{textbox}
+
+\begin{textbox}{Cryptography}
+    \blue{Receiver:} picks two large prime numbers $p$ and $q$, compute $n = pq$.
+    \begin{itemize}
+        \item \underline{public key:} $(n, e)$  where $e$ is random s.t. $gcd(e, (p-1)(q-1)) = 1$.
+        \item \underline{private key:} ${\bf d} = e^{-1} \pmod{(p-1)(q-1)} \implies de \equiv 1 \pmod{(p-1)(q-1)}$.
+    \end{itemize}
+
+    \green{RSA algorithm:} Let sender's message be $m$.
+    \begin{enumerate}
+        \item Encrytpion: $y = E(m) = m^e \pmod{n}$ —using public key $(n, e)$
+        \item Decryption: $m = D(y) = y^{d} \pmod{n}$ —using private key $d$
+    \end{enumerate}
+\end{textbox}
+
+
+\begin{textbox}{NP-c approximations}
+    {\bf ${\bf \alpha}$-approximation:} $f$ is an $\alpha$-approximation to 
+    $f^*$ if $f(x) \leq \alpha f^*(x)$ for all $x$.
+
+    \green{Independent Set:} Given a graph $G = (V, E)$, find largest set of 
+    vertices $S \subseteq V$ such that no two vertices in $S$ are adjacent.
+
+    \green{Vertext Cover:} Given a graph $G = (V, E)$, find the smallest set of 
+    vertices $S \subseteq V$ such that every edge in $E$ is incident to at 
+    least one vertex in $S$.
+
+    \green{Max Cut:} Given a graph, divide vertices into two sets to maximize 
+    number of edges between them.
+    \begin{itemize}
+        \item Split vertices arbitrarily. 
+        \item While moving a vertex impoves the solution, move it.
+        \item stop when no more moves improve the solution.
+    \end{itemize}
+
+\end{textbox}
 
 %--------------------------------------------- 
 \end{multicols}

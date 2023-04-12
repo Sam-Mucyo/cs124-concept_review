@@ -1,0 +1,228 @@
+
+\documentclass[11pt]{article}   
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\np}{\mathop{\rm NP}}
+%\newcommand{\binom}[2]{{#1 \choose #2}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\vol}{\mathop{\rm Vol}}
+\newcommand{\conp}{\mathop{\rm co-NP}}
+\newcommand{\atisp}{\mathop{\rm ATISP}}
+\renewcommand{\vec}[1]{{\mathbf #1}}
+\newcommand{\cupdot}{\mathbin{\mathaccent\cdot\cup}}
+\newcommand{\mmod}[1]{\ (\mathrm{mod}\ #1)}  
+\def\O{\mathop{\smash{O}}\nolimits}
+\def\o{\mathop{\smash{o}}\nolimits}
+\newcommand{\e}{{\rm e}}
+\newcommand{\R}{{\bf R}}
+\renewcommand{\Z}{{\bf Z}}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0in}
+
+
+\begin{document}
+	
+	\section*{CS 124 Midterm: Spring 2022}
+ 		
+	\textbf{Your name:} 	
+
+	\textbf{Instructions: } 
+	
+	\begin{itemize}
+		\item
+		Spend at most 75 minutes on the exam, from the time you first see a problem to the last time you write anything in your solutions. (Time spent uploading doesn't count against your time.)
+		
+		{\bf Time started: } \uline{\hfill} {\bf Time ended: } \uline{\hfill} \phantom{x}
+		
+\item Do not communicate with anyone but the course staff about the contents of the exam.
+\item Do not use a computer or other electronic aids during the exam for anything except for:
+\begin{enumerate}
+\item (optionally) typesetting your solutions,
+\item (optionally) asking clarification questions of the instructors on Ed.
+\item (optionally) looking at pre-prepared notes, using no electronic features not also possible on paper (in particular, no search function)
+\end{enumerate}
+\item (You may use your own prepared notes.)
+		\item After you finish the exam, type your name in affirmation of the following statement:
+
+		\begin{quote}
+			I, \uline{
+			%Replace the following line with your name to sign
+			\hspace{5in}
+			}, 
+			pledge my honor that I have obeyed all instructions on this page in taking this exam.
+		\end{quote}
+	\end{itemize}
+	
+	
+	\noindent\textbf{Reminder:} 
+	
+	After you finish, upload your exam to Gradescope as if it were a problem set.
+	
+	
+	\noindent\textbf{Advice:}
+	\begin{itemize}
+		\item You have 75 minutes to earn a maximum of 75 points. {\bf Do not spend too much time on any single problem}:
+		we recommend roughly $n$~minutes on an $n$~point problem. Read all
+		the problems first, and attack them in the order that allows you to
+		make the most progress.
+		\item You can ask clarification questions of the instructors on Ed.
+		\item Be neat and write legibly and clearly. You will be graded not
+		only on the correctness of your answers, but also on the clarity
+		with which you express them.
+		\item Do not waste time re-deriving results presented in class, psets,
+		or sections. You may simply state and cite them.
+	\end{itemize}
+			
+	
+	\newpage
+	
+    \section{True or False (18 points)}
+    
+    For each of the following statements, say whether the statement is \textbf{TRUE} or \textbf{FALSE}. Each correct answer is worth 2 points. Incorrect answers are worth 0 points. No explanations are needed.
+
+\begin{enumerate}
+    \item $5^{\log^*n} = O(n^5)$
+    
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+    
+    
+    \item No directed graph with $124$ vertices and $124$ edges has a valid topological sort.
+    
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+    
+    \item The following encoding is prefix-free:
+    
+    $$
+    \begin{array}{c}
+        A \rightarrow 1  \\
+        B \rightarrow 2 \\
+        \ldots \\
+        Y \rightarrow 25 \\
+        Z \rightarrow 26
+    \end{array}$$
+    
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+    
+    \item There is an $O(n^{1000})$ algorithm to sort a list of size $n$.
+    
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+    
+\item Given a biased coin that shows heads with probability 1, is there an algorithm to generate unbiased coin flips from flips of this coin (and no other source of randomness) that generates, in expectation, at least $\frac{1}{8}$ unbiased flips per flip of the biased coin?
+
+\medskip 
+
+\textbf{True \, \, \, \, \, \, \, False}
+
+\item
+For every directed graph $G$, we can find a topological sort of $G$ by running a DFS and ordering the vertices in decreasing order of their post-order numbers. 
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+\item
+For every directed graph $G$, the number of strongly connected components of $G$ is strictly less than the number of vertices of $G$. 
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+\item
+Suppose we Huffman-encode a set of items of which one item $i$ occurs with probability $p_i = 1/2$. Then, the Huffman encoding of $i$ is always 1 bit long.
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+\item
+
+For every undirected graph with all positive edge weights, there exists a vertex v such
+that the tree of shortest paths from v is a minimum spanning tree of the graph.
+    \medskip 
+    
+    \textbf{True \, \, \, \, \, \, \, False}
+    \end{enumerate}
+
+\newpage
+
+\section{Edges In and Out of MSTs (8 points)}
+
+For each of the graphs below, mark an ``x'' on each of two edges that cannot be part of any minimum spanning tree,
+and an ``o'' on each of two edges that must be in every minimum spanning tree. Note that there may be more than two
+possibilities, but you should identify just two of each. No justification is needed.
+
+\begin{enumerate}
+    \item \includegraphics[scale = .9]{a_question.PNG}
+        
+    \item \includegraphics[scale = .9]{b_question.PNG}
+    
+    \item \includegraphics[scale = .9]{c_question.PNG}
+        
+    \item \includegraphics[scale = .9]{d_question.PNG}
+    
+\end{enumerate}
+
+\newpage
+
+\section{Even Paths (12 points)}
+Give an algorithm that, given a directed acyclic graph $G = (V(G), E(G))$ with positive integer edge weights, and also given vertices $s, t \in V(G)$, finds the length of the shortest path from $s$ to $t$ \emph{that uses an even number of edges} (or returns $\infty$ if no such path exists). Your algorithm should run in time and space $O(n+m)$ on a graph with $n$ vertices and $m$ edges, but you don't need to analyze the runtime or space or prove that upper bound. Prove the correctness of your algorithm. 
+
+\newpage
+
+\section{Union before Find (8 points)}
+Suppose we have an initially-empty union find data structure (complete with the union-by-rank and path-compression heuristics), on which we call MAKESET $n$ times, then UNION $m$ times, then FIND $\ell$ times, \emph{in that order}. Prove that the total time necessary to do all those operations is $O(n + m \log^* n + \ell)$. 
+
+For up to 5 points' worth of partial credit, instead prove that the total time necessary to do all those operations is $O(n \log^* n + m \log^* n + \ell)$.
+
+(As a reminder that you may use without proof, the total time to run MAKESET $n$ times, UNION $m$ times, and FIND $\ell$ times, \emph{in possibly-mixed order} is $O(n + m \log^* n + \ell \log^* n)$.)
+
+\newpage
+\section{Martian Colonization (17 points)}
+Elon is hoping to set up colonies on Mars. There are $n$ potential locations for colonies, and some of the locations have natural roads that allow colonists to travel between them. The set of natural roads forms a tree on the graph whose vertices are the colonies.
+Each location $\ell$ for a colony has some (not necessarily positive) integer quality $q_\ell$. However, to survive on Mars, a colony must have at least one colony neighboring it (by a natural road). A colony may have multiple neighbors. Elon wishes to found the set of colonies whose total value is maximal.
+\begin{enumerate}
+\item {\bf (4 points)} 
+A greedy algorithm calculates, for each edge $(u,v)$, the sum $q_u + q_v$ of the qualities of its endpoints, and calls that edge ``good'' if the sum of the qualities is positive. Then it founds colonies at every site that's an endpoint of at least one good edge. Give an example instance of this problem (a tree and qualities of its vertices) for which this greedy algorithm does not solve the problem. (No proof necessary.)
+
+\vfill
+
+\item {\bf (13 points)} Give an algorithm to maximize the sum of the qualities of the colonies. Your algorithm should run in time $O(n^{124})$ and space $O(n)$, but you don't need to analyze the runtime or space or prove that upper bound. You don't need to prove its correctness, but an explanation may be considered for partial credit if your algorithm's wrong or incomplete.
+
+\vfill
+
+\vfill
+\end{enumerate}
+
+\newpage
+\section{Exam Security (12 points)}
+In order to keep the 2022 CS 124 Midterm as secret as possible, Adam has broken the answer key into $n$ parts $\{a_1, \ldots, a_n\}$ and given each part $a_i$ to one of the $n$ TFs, $t_i$. Each TF, eager to know whether or not they can even score higher than the median on this exam, makes promises with other TFs---``I promise to give you all parts of the exam that I know." Let the set of promises be $P,$ and let element $(t_i, t_j) \in P$ indicate a promise from $t_i$ to $t_j.$\\
+
+For example, if $t_1 = \text{John}$ extends a promise to $t_2 = \text{Phyllis}$ and $t_2 = \text{Phyllis}$ extends a promise to $t_3 = \text{Tarun}$, then, after all promises are fulfilled John will have $a_1;$ Phyllis will have $a_1$ and $a_2;$ Tarun will have $a_1, a_2,$ and $a_3$ (since Phyllis will give Tarun everything she knows, including her part and John's part). The TFs may communicate multiple times to fulfill their promises: e.g. if $t_3 = \text{Tarun}$ also made a promise to $t_1 = \text{John}$, then after all communication, all three TFs would know all three pieces of the answer key.\\
+
+You are a CS124 student, worried about this exact moment -- reading an overly wordy question on the midterm. So, after the TFs have finished communicating, you decide to steal a TF's laptop, containing all their pieces of the answer key! You can only steal one laptop before you get caught. You would like the full answer key. Design an algorithm that, given $n$ and $P,$ will return the list of all TFs whose laptops you can steal to obtain the full answer key (or the empty list if no such TFs exist). If there are $m$ promises made, your algorithm should run in $O(n+m)$ time and space, but you don't need to analyze the runtime or space or prove that upper bound. Prove the correctness of your algorithm.
+
+\newpage
+
+\section*{Extra page for problem \# \underline{\hspace{1cm}}}
+\newpage
+
+\section*{Extra page for problem \# \underline{\hspace{1cm}}}
+
+\end{document}
