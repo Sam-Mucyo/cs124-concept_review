@@ -1,0 +1,15 @@
+.DS_Store
+*.aux 
+*.log 
+*.out 
+*.toc
+*.bbl
+*.blg
+*.dvi
+*.ps
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.bcf
+*.xml
+_minted-*
