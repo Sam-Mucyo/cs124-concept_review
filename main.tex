@@ -274,6 +274,10 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 \end{textbox}
 
 \begin{textbox}{Hashing and Set Resemblance}
+    \includegraphics[width=0.7\textwidth]{images/Hashing1.png}
+
+    \includegraphics[width=0.7\textwidth]{images/Hashing2.png}
+
 
 \end{textbox}
 
@@ -304,9 +308,18 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
         \end{enumerate}
      $a$ is a {\bf witness} to the compositeness of $n$, if $n$ fails the test under $a$.\\
     \red{Note:} Let ${\bf F}$ be \textcolor{purple}{incorrectly} identifying $n$ as prime.  ${\bf Pr(F) \leq 1/4}$. With $k$ independent tests, $ {\bf Pr(F) \leq 4^{-k}}$.
+    
+    \blue{Operation Runtimes:} 
+    \begin{itemize}
+        \item Most of these arthmetic operation has fast 
+        polynomial runtime in $n$: addition, subtraction, multiplication, division, exponentiation, modular reduction, Euclid's algorithm, and Primality testing.
+        \item \textcolor{red}{Exception:} Factor($a$): output all prime factors of $a$.
+    \end{itemize}
+    
+    
 \end{textbox}
 
-\begin{textbox}{Euclid's algorithm}
+\begin{textbox}{Euclid's algorithm \& RSA Cryptosystem}
     Def: $gcd(a, b) = max(d \in \mathbb{Z} : d | a \text{ and } d | b)$.\\
     \green{Basic algorithm:} find the $gcd(a, b)$ by repeatedly subtracting the smaller number from the larger number.\\
     \linebreak
@@ -334,13 +347,14 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
         \item $5 = 1 \cdot 0 + 5$.
         \item $x = 1, y = -2$.
     \end{itemize}
-\end{textbox}
-
-\begin{textbox}{Cryptography}
+    \green{RSA Cryptosystem:} \\
     \blue{Receiver:} picks two large prime numbers $p$ and $q$, compute $n = pq$.
+    Also, Picks $0 \le e \le n$ such that $gcd(e, (p-1)(q-1)) = 1$.
     \begin{itemize}
-        \item \underline{public key:} $(n, e)$  where $e$ is random s.t. $gcd(e, (p-1)(q-1)) = 1$.
-        \item \underline{private key:} ${\bf d} = e^{-1} \pmod{(p-1)(q-1)} \implies de \equiv 1 \pmod{(p-1)(q-1)}$.
+        \item \underline{private key:} 
+        $${\bf d} = e^{-1} \pmod{(p-1)(q-1)}$$ 
+        $$\implies de \equiv 1 \pmod{(p-1)(q-1)}$$
+        \item \underline{public key:} $(n, e)$ 
     \end{itemize}
 
     \green{RSA algorithm:} Let sender's message be $m$.
@@ -369,10 +383,6 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
         \item While moving a vertex impoves the solution, move it.
         \item stop when no more moves improve the solution.
     \end{itemize}
-
-\end{textbox}
-
-\begin{textbox}{NP-c Heuristics}
     \green{MAX SAT: Linear Relaxation}
     \begin{itemize}
         \item Convert formula to integer equations. E.g. $(X \vee 
@@ -393,9 +403,35 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
     \end{itemize}
 \end{textbox}
 
-\begin{textbox}{Linear Programming}
-    \green{Simplex algorithm:} Hill climbing on feasible region always yields 
-    an optimal solution.
+
+\begin{textbox}{Randomized 3-SAT Algorithm}
+    {\bf Algorithm:} \underbar{Input:} a satisfiable 3SAT Formula with $n$ variables.
+    \begin{itemize}
+        \item Repeat:
+    \begin{enumerate}
+        \item Start with a random assignment of variables.
+        \item Do the following $3n$ times:
+        \begin{enumerate}
+            \item Check for an unstatisfied clause. If there is one, flip a random variable in that clause.
+            \item If the assignment satisfies all clauses, return the assignment.
+        \end{enumerate}
+    \end{enumerate}
+    \end{itemize}
+
+    {\bf Expected Runtime Analysis:}
+    \begin{enumerate}
+        \item Since in each flip we have $\frac{1}{2}$ probability of increasing
+        the score and $\frac{2}{3}$ of decreasing it. We can model this as the gambler's ruin problem. 
+        the probability of finding a satisfying assignment will be $\Omega(c^n)$,
+        for some $c > 1/2$.
+        \item The number of trials until a success is $\sim \text{FS}(O(c^n))$ 
+        giving us an expected number of trials equal to $O(c^{-n})$.
+        \item In each trial, the algorithm do $3n$ steps, $O(3n)$, each of which 
+        it checks all clauses. Since the are $n$ variables and each clauses can
+        have atmost $3$ variables, the number of unique clauses is $O(n^3)$.
+        \item Resulting in a Expected runtime of $O(3n^4 c^{-n}) = o(2^{n})$.
+        
+    \end{enumerate}
 \end{textbox}
 
 \begin{textbox}{Network Flow}
