@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.11)  10 APR 2023 15:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.11)  24 APR 2023 19:11
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1626,7 +1626,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-[3] (main.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
+
+ []
+
+
+Overfull \vbox (45.72313pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (41.72122pt too high) has occurred while \output is active []
+
+ [3] [4] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E76F40EC4E5A3BBD2B86046344F15F57;668.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -1634,17 +1655,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 43238 strings out of 476344
- 869975 string characters out of 5785304
- 1928346 words of memory out of 5000000
- 62940 multiletter control sequences out of 15000+600000
+ 43246 strings out of 476344
+ 870084 string characters out of 5785304
+ 1963346 words of memory out of 5000000
+ 62944 multiletter control sequences out of 15000+600000
  669730 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  106i,14n,107p,739b,1761s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/raleway/a_bzmckq.enc}{/Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/enc/dvips/raleway/a_2bcjq6.enc}</Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Bold.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-BoldItalic.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Italic.pfb></Users/sammucyo/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/impallari/raleway/Raleway-Regular.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy5.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (3 pages, 1446493 bytes).
+Output written on main.pdf (4 pages, 1454232 bytes).
 PDF statistics:
- 209 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
  212 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -372,6 +372,93 @@ $CE+DG = P_3 + P_4$ and $CF +DH = P_1 - P_3 + P_5 + P_7$\\
 
 \end{textbox}
 
+\begin{textbox}{NP-c Heuristics}
+    \green{MAX SAT: Linear Relaxation}
+    \begin{itemize}
+        \item Convert formula to integer equations. E.g. $(X \vee 
+        \bar{Y}) \to$ $x' + (1 - y') \geq 1$.
+        \item Relax the constraint for variables $x', y', \dots \in \{0, 1\}$ to 
+             $x', y', \dots \in [0, 1]$. 
+        \item Solve the relaxed problem to get assignment $x', y', \dots$ 
+                Then let $X = 1$ with probability $x'$
+    \end{itemize}
+    \blue{Claim:} If formular is satisfiable, then the number of clauses satisfied 
+    by above algorithm $\geq \text{ |clauses|} \cdot (1 - 1/e) \approx 0.63\text{ |clauses|}$
+
+    \green{MAX SAT: Local Search}
+    \begin{itemize}
+        \item Pick a random assignment $x, y, \dots \in \{0, 1\}$.
+        \item While moving a variable improves the solution, move it.
+        \item stop when no more moves improve the solution.
+    \end{itemize}
+\end{textbox}
+
+\begin{textbox}{Linear Programming}
+    \green{Simplex algorithm:} Hill climbing on feasible region always yields 
+    an optimal solution.
+\end{textbox}
+
+\begin{textbox}{Network Flow}
+    {\bf Story:} Given the number of available tickets $t_{ij}$ between cities 
+    $i$ and $j$, along with the city map, the goal is to maximize the number of 
+    tickets sold for people traveling from city $s$ to city $t$.
+
+    \green{Reduction to LP:}
+    \textbf{Objective function:}
+
+    Maximize the total flow of tickets from the source node $s$ to the target node $t$. In other words, maximize the sum of $x_{st}$ over all edges $(s, t)$.
+
+    \begin{equation}
+    \text{maximize} \sum_{(s, t)} x_{st}
+    \end{equation}
+
+    \textbf{Subject to the following constraints:}
+
+    1. Flow conservation constraints: For each node $i$, other than $s$ and $t$, the flow into the node must equal the flow out of the node.
+
+    \begin{equation}
+    \sum_{j} x_{ij} - \sum_{k} x_{ki} = 0, \forall i \neq s, t
+    \end{equation}
+
+    2. Capacity constraints: The flow of tickets on each edge $(i, j)$ must not exceed the available tickets $t_{ij}$.
+
+    \begin{equation}
+    0 \le x_{ij} \le t_{ij}, \forall (i, j)
+    \end{equation}
+    \green{Ford Fulkerson:}
+    \begin{itemize}
+        \item Make a Residual graph and Start with empty flow.
+        \item While there is an augmenting path from $s$ to $t$:
+            \begin{itemize}
+                \item Find the bottleneck capacity $b$ on the path.
+                \item Increase the flow on the path by $b$ and update residues.
+            \end{itemize}
+        \item The final flow is the maximum flow.
+    \end{itemize}
+    \textcolor{blue}{{\bf Augmenting path:}} is a path from $s$ to $t$ such that the flow on the path can be increased by at least one unit.
+    
+    \textcolor{blue}{{\bf Residual Graph:}}  for every edge (x,y) of G, add edge (y,x), capacity c(y,x) = flow f(x,y)
+
+    \myblue{Runtime: } 
+    \begin{itemize}
+        \item with DFS to find augmenting paths$O(VEU)$, where U is max edge capacity.
+        \item $O(VE^2)$ with BFS (“Edmonds-Karp algorithm”).
+    \end{itemize}
+    
+    \textcolor{blue}{{\bf Max-flow min-cut theorem:}} The maximum flow is equal to the minimum capacity of an $s$-$t$ cut.
+    
+    \smallskip
+    Claim: when* Ford-Fulkerson terminates, we can find a cut matching the flow.
+    \begin{itemize}
+        \item No s-t path (of nonzero edges) in residual graph.
+        \item Choose V1 = {vertices reachable from s}
+        \item All edges e leaving V1 have f(e) = c(e)
+        \item All edges e entering V1 have f(e) = 0
+        \item So, total flow = capacity of cut.
+    \end{itemize}
+
+\end{textbox}
+
 %--------------------------------------------- 
 \end{multicols}
 \end{document}
